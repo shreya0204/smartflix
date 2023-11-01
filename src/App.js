@@ -1,10 +1,8 @@
-import './App.css';
+import Body from "./components/Body/Body";
 
 function App() {
   return (
-    <div className="text-3xl ">
-      BYE
-    </div>
+    <Body />
   );
 }
 
