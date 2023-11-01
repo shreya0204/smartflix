@@ -1,20 +1,39 @@
 import { useRef, useState } from 'react';
 import { checkValiddata } from '../../utils/validate';
+import { signIn } from '../../services/firebase/auth'
+
+
 const LoginForm = () => {
     const [isSignIn, setIsSignIn] = useState(true);
     const [errorMessages, setErrorMessages] = useState({
         email: '',
         password: '',
+        general: '',
     });
     const email = useRef();
     const password = useRef();
 
-    const handleSigninSignupButton = () => {
-        setErrorMessages(checkValiddata(email, password));
+    const handleSigninSignupButton = async () => {
+        const validationErrors = checkValiddata(email, password);
+        setErrorMessages(validationErrors);
+        if (Object.keys(validationErrors).length !== 0) return;
+        const { user, error, errorCode } = await signIn(isSignIn, email.current.value, password.current.value);
+
+        if (user) {
+            console.log("My user is : ", user);
+        } else if (error) {
+            setErrorMessages(prevState => ({
+                ...prevState,
+                general: `${errorCode}`,
+            }));
+        }
     };
+
     const toggleSignInForm = () => {
         setIsSignIn(!isSignIn);
     };
+
+
     return (
         <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center">
             <div className=" w-6/12 lg:w-4/12 lg:h-fit p-12 bg-black bg-opacity-75">
@@ -22,6 +41,7 @@ const LoginForm = () => {
                     onSubmit={(e) => e.preventDefault()}
                     className="flex flex-col justify-between items-center gap-2"
                 >
+                    <p className="text-red-600 text-lg italic mt-1 mb-2">{errorMessages.general}</p>
                     {!isSignIn && (
                         <input
                             type="text"
