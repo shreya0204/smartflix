@@ -2,19 +2,10 @@ import { useEffect, useState } from 'react';
 import { IMAGE_URL } from '../../../utils/constants';
 
 const BgVideoInfo = ({ image_id, title, subtitle }) => {
-    const [showImage, setShowImage] = useState(true);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setShowImage(false);
-        }, 5000);
-
-        return () => clearTimeout(timer);
-    }, []);
     return (
         <div className="absolute top-1/2 w-5/12 lg:w-4/12 h-fit flex flex-col gap-4 lg:gap-10 translate-x-14 -translate-y-1/2 z-10 text-white p-8 rounded-lg bg-gray-800 bg-opacity-40 hover:bg-opacity-25 transition-all 0.5s ease-in-out">
 
-            <div className={`transition-opacity duration-1000 ease-in-out ${showImage ? 'opacity-100' : 'hidden'}`}>
+            <div className='transition-opacity duration-1000 ease-in-out'>
                 <img
                     src={`${IMAGE_URL}${image_id}`}
                     alt="movie logo"
