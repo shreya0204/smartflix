@@ -1,3 +1,4 @@
+import { USER_AVATAR } from '../../utils/constants';
 import { auth } from './index';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
@@ -29,7 +30,7 @@ export const updateUserProfile = async (user, name) => {
         // Update the user's profile
         await updateProfile(user, {
             displayName: name,
-            photoURL: "https://occ-0-6246-2164.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABS5zyiA_uDE4vs9AaQKq7KpZzp9enMkWlZ8tEAVdupwBwH-xsA7pN7Y3cUUYWGtKARFEBN-mUEpPigEi2COFrSUSp7tf3zE.png?r=bd7"
+            photoURL: USER_AVATAR,
         });
         return { user: { ...user, displayName: name, photoURL: user.photoURL } };
     } catch (error) {

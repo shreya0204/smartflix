@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { addUser, removeUser } from '../../services/redux/userSlice';
+import { LOGO_URL } from '../../utils/constants';
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const Header = () => {
     };
 
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 //sign in
                 const { uid, email, displayName, photoURL } = user;
@@ -30,13 +31,18 @@ const Header = () => {
                 navigate('/');
             }
         });
+
+        return () => {
+            // clean up - unsubscribe when component is unmount
+            unsubscribe();
+        }
     }, []);
 
     return (
         <div>
             <div className="w-screen absolute h-24 bg-gradient-to-b from-gray-900 z-10 top-0 left-0 ">
                 <img
-                    src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
+                    src={LOGO_URL}
                     alt="logo"
                     className="h-full object-contain"
                 />
