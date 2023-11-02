@@ -22,7 +22,7 @@ const useNowPlayingMovies = () => {
     }, [dispatch]);
 
     const movies = useSelector(state => state.movies.nowPlayingMovies);
-    return { movies, isLoading, error };
+    return { nowPlayingMoviesData: movies, isLoading, error };
 };
 
 export { useNowPlayingMovies };

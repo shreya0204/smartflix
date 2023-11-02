@@ -5,8 +5,8 @@ import BgVideo from "./BgVideo";
 const BrowseHero = () => {
 
     const movies = useSelector(store => store.movies?.nowPlayingMovies);
-    const bgMovie = movies[Math.floor(Math.random() * movies.length)];
-    // const bgMovie = movies[0];
+    // const bgMovie = movies[Math.floor(Math.random() * movies.length)];
+    const bgMovie = movies[0];
 
     return (
 
