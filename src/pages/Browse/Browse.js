@@ -1,20 +1,22 @@
-import { useEffect, useState } from 'react';
+import BackgroundVideo from '../../components/Browse/Hero';
 import Header from '../../components/Header/Header';
-import { getNowPlayingMovies } from '../../services/api/movies';
+import { useNowPlayingMovies } from '../../hooks/useNowPlayingMovies';
 
 const Browse = () => {
 
-    const [moviesData, setMoviesData] = useState([]);
+    const { movies, isLoading, error } = useNowPlayingMovies();
 
-    useEffect(() => {
-        setMoviesData(getNowPlayingMovies());
-    }, [])
 
     return (
         <div>
             <Header />
+            {/* Main Container - Video Player and Video Description*/}
+            <BackgroundVideo />
+
+
+            {/* Movies Lists Container */}
         </div>
     )
 }
 
-export default Browse;
+export default Browse;  
