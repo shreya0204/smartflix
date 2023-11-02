@@ -40,7 +40,7 @@ const Header = () => {
 
     return (
         <div>
-            <div className="w-screen absolute h-24 bg-gradient-to-b from-gray-900 z-10 top-0 left-0 ">
+            <div className="w-screen absolute h-24 bg-gradient-to-b from-gray-900 z-20 top-0 left-0 ">
                 <img
                     src={LOGO_URL}
                     alt="logo"

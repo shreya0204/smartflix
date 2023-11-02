@@ -1,21 +1,23 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getMovieTrailerById } from '../../../services/api/movies';
+import { YOUTUBE_VIDEO_URL } from '../../../utils/constants';
 
 const BgVideo = ({ movie_id }) => {
+
+    const [trailerId, setTrailerId] = useState(null);
+
     useEffect(() => {
-        getMovieTrailerById(movie_id);
-        // console.log(movieVideoData);
+        getMovieTrailerById(movie_id).then(trailerId => setTrailerId(trailerId));
     }, [movie_id]);
 
     return (
-        <div>
+        <div className='relative w-screen h-screen'>
             <iframe
-
-                src="https://www.youtube.com/embed/sxlDlo6iOVY?autoplay=1&mute=1&loop=1&controls=0"
+                className='w-full h-full '
+                src={`${YOUTUBE_VIDEO_URL}${trailerId}?autoplay=1&vq=hd720&mute=1&disablekb=1&showinfo=0&logo=0&controls=0&autohide=1&modestbranding=0&rel=0&loop=1&playlist=${trailerId}`}
                 title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             ></iframe>
-        </div>
+        </div >
     );
 };
 export default BgVideo;

@@ -14,4 +14,8 @@ export const API_OPTIONS = {
 
 export const IMAGE_URL = 'https://image.tmdb.org/t/p/w500'
 
+export const VIDEO_URL = 'https://api.themoviedb.org/3/movie/'
+
+export const YOUTUBE_VIDEO_URL = 'https://www.youtube.com/embed/'
+
 export const NOW_PLAYING_MOVIE_URL = 'https://api.themoviedb.org/3/movie/now_playing?page=1';
