@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { checkValiddata } from '../../utils/validate';
 import { signIn } from '../../services/firebase/auth'
-import { addUser } from '../../services/redux/userSlice'
+import { addUser } from '../../services/redux/slices/userSlice'
 import { useDispatch } from 'react-redux';
 import { auth } from '../../services/firebase';
 
