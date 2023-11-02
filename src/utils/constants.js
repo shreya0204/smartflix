@@ -11,3 +11,7 @@ export const API_OPTIONS = {
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YmY2MTIyMWVlN2MyNjU4ZWQ3NjhjNjM2MTM3MTdlMCIsInN1YiI6IjY1NDM3ZDBlNmJlYWVhMDBjOWZhNzU0NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XfMGa1H9N8wRKR_tTKXBaheUDB_rVxzQQr1MSqRyRoE'
     }
 };
+
+export const IMAGE_URL = 'https://image.tmdb.org/t/p/w500'
+
+export const NOW_PLAYING_MOVIE_URL = 'https://api.themoviedb.org/3/movie/now_playing?page=1';
