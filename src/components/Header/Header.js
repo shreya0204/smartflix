@@ -40,7 +40,7 @@ const Header = () => {
 
     return (
         <div>
-            <div className="w-full absolute h-24 bg-gradient-to-b from-gray-900 z-20 top-0 left-0 ">
+            <div className={`w-full absolute h-24 bg-gradient-to-b from-gray-900 z-20 top-0 left-0 ${user ? 'bg-gray-950' : ''}`}>
                 <img
                     src={LOGO_URL}
                     alt="logo"
@@ -48,22 +48,24 @@ const Header = () => {
                 />
             </div>
 
-            {user && (
-                <div className="z-20 h-16 absolute top-0 right-0 mr-5 mt-5 cursor-pointer flex gap-4">
-                    <img
-                        src={user?.photoURL}
-                        alt="user-icon"
-                        className="h-3/4 cursor-pointer"
-                    />
-                    <button
-                        onClick={handleSignOut}
-                        className="h-fit w-fit text-center bold p-3 text-white rounded-sm bg-gray-900"
-                    >
-                        Sign Out
-                    </button>
-                </div>
-            )}
-        </div>
+            {
+                user && (
+                    <div className="z-20 h-16 absolute top-0 right-0 mr-5 mt-5 cursor-pointer flex gap-4">
+                        <img
+                            src={user?.photoURL}
+                            alt="user-icon"
+                            className="h-3/4 cursor-pointer"
+                        />
+                        <button
+                            onClick={handleSignOut}
+                            className="h-fit w-fit text-center bold p-3 text-white rounded-sm bg-gray-900"
+                        >
+                            Sign Out
+                        </button>
+                    </div>
+                )
+            }
+        </div >
     );
 };
 
