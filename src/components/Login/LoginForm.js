@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react';
 import { checkValiddata } from '../../utils/validate';
 import { signIn } from '../../services/firebase/auth'
-import { useNavigate } from 'react-router-dom';
 import { addUser } from '../../services/redux/userSlice'
 import { useDispatch } from 'react-redux';
 import { auth } from '../../services/firebase';
@@ -10,7 +9,6 @@ const LoginForm = () => {
     const name = useRef();
     const email = useRef();
     const password = useRef();
-    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const [isSignIn, setIsSignIn] = useState(true);
@@ -36,7 +34,6 @@ const LoginForm = () => {
                     photoURL: photoURL,
                 }));
             }
-            navigate('/browse')
         } else if (error) {
             setErrorMessages(prevState => ({
                 ...prevState,
