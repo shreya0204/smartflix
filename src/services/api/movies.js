@@ -1,19 +1,36 @@
-import { API_OPTIONS, NOW_PLAYING_MOVIE_URL, VIDEO_URL } from '../../utils/constants';
+import { API_OPTIONS, MOVIES_BASE_URL, VIDEO_URL } from '../../utils/constants';
 
-export const getNowPlayingMovies = async () => {
-    const moviesData = await fetch(NOW_PLAYING_MOVIE_URL, API_OPTIONS)
+export const fetchAllMoviesData = async () => {
 
-    const movies = await moviesData.json()
-    return movies.results;
-}
+    const MOVIE_TYPES = ["popular", "top_rated", "upcoming"];
 
+    try {
+        const moviePromises = MOVIE_TYPES.map(async (type) => {
+
+            const response = await fetch(`${MOVIES_BASE_URL}${type}?page=1`, API_OPTIONS);
+
+            if (!response.ok) {
+                throw new Error("Failed to fetch movies.");
+            }
+
+            const data = await response.json();
+            return { [type]: data.results };
+        });
+
+        const moviesData = await Promise.all(moviePromises);
+        const movies = Object.assign({}, ...moviesData);
+
+        return movies;
+    } catch (error) {
+        throw error;
+    }
+};
 
 export const getMovieTrailerById = async (movie_id) => {
     const movieVideosData = await fetch(VIDEO_URL + movie_id + '/videos', API_OPTIONS)
 
     const movieVideos = await movieVideosData.json()
     if (movieVideos.results && movieVideos.results.length > 0) {
-        // Find the first YouTube trailer video, if available
         const trailerVideo = movieVideos.results.find(video => video.type === 'Trailer' && video.site === 'YouTube');
         return trailerVideo ? trailerVideo.key : movieVideos.results[0].key;
     }

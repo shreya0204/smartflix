@@ -18,4 +18,4 @@ export const VIDEO_URL = 'https://api.themoviedb.org/3/movie/'
 
 export const YOUTUBE_VIDEO_URL = 'https://www.youtube.com/embed/'
 
-export const NOW_PLAYING_MOVIE_URL = 'https://api.themoviedb.org/3/movie/now_playing?page=1';
+export const MOVIES_BASE_URL = 'https://api.themoviedb.org/3/movie/';

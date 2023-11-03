@@ -1,15 +1,13 @@
 import MovieCard from "./MovieCard";
 
-const MovieList = ({ title, movies }) => {
-
-    console.log("MovieList", title, movies);
+const MovieList = ({ title, movies, isLoading }) => {
 
     return (
-        <div className="flex flex-col gap-2 bg-transparent pl-14 -translate-y-2/4" >
+        <div className="flex flex-col gap-2 bg-transparent pl-14 -translate-y-3/4 lg:-translate-y-2/3 mt-6 lg:mt-10" >
             < div >
-                <h1 className="text-white font-semibold text-xl ">{title}</h1>
+                <h1 className="text-white font-semibold text-lg ">{title}</h1>
             </div >
-            <div className="flex flex-row gap-2 overflow-x-scroll">
+            <div className="flex flex-row gap-2 overflow-x-scroll scrollbar-hide">
                 {
                     movies?.map((movie) => {
                         return <MovieCard key={movie.id} imageId={movie.backdrop_path} />
