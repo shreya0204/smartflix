@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getMovieTrailerById } from '../../../services/api/movies';
-import { YOUTUBE_VIDEO_URL } from '../../../utils/constants';
+import { YOUTUBE_VIDEO_URL } from '../../../utils/constants/urlConstants';
 
 const BgVideo = ({ movie_id }) => {
 

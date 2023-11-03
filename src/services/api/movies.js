@@ -1,4 +1,4 @@
-import { API_OPTIONS, MOVIES_BASE_URL } from '../../utils/constants';
+import { API_OPTIONS, MOVIES_BASE_URL } from '../../utils/constants/urlConstants';
 
 export const fetchAllMoviesData = async () => {
 

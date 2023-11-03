@@ -1,6 +1,6 @@
 import Header from '../../components/Header/Header';
 import LoginForm from '../../components/Login/LoginForm';
-import { BG_URL } from '../../utils/constants';
+import { BG_URL } from '../../utils/constants/urlConstants';
 
 const Login = () => {
 

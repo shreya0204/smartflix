@@ -1,4 +1,4 @@
-import { USER_AVATAR } from '../../utils/constants';
+import { USER_AVATAR } from '../../utils/constants/urlConstants';
 import { auth } from './index';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
 

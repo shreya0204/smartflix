@@ -4,9 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { addUser, removeUser } from '../../services/redux/slices/userSlice';
-import { LOGO_URL } from '../../utils/constants';
+import { LOGO_URL } from '../../utils/constants/urlConstants';
+import LanguageDropDown from './LanguageDropDown';
 
-const Header = () => {
+const Header = ({ showSearch, setShowSearch }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector((store) => store.user);
@@ -51,14 +52,24 @@ const Header = () => {
             {
                 user && (
                     <div className="z-20 h-16 absolute top-0 right-0 mr-5 mt-5 cursor-pointer flex gap-4">
-                        <img
-                            src={user?.photoURL}
-                            alt="user-icon"
-                            className="h-3/4 cursor-pointer"
-                        />
+                        {
+                            showSearch && <LanguageDropDown />
+                        }
+                        <button className="h-fit w-fit text-center font-semibold p-3 text-white rounded-sm hover:bg-gray-300 hover:text-gray-900 transition-all 1.5s ease-in-out" onClick={
+                            () => setShowSearch(!showSearch)
+                        }>
+                            {showSearch ? 'Go Back' : 'GPT Search'}
+                        </button>
+                        <div>
+                            <img
+                                src={user?.photoURL}
+                                alt="user-icon"
+                                className="h-3/4 cursor-pointer"
+                            />
+                        </div>
                         <button
                             onClick={handleSignOut}
-                            className="h-fit w-fit text-center bold p-3 text-white rounded-sm bg-gray-900"
+                            className="h-fit w-fit text-center bold p-3 text-white rounded-sm bg-gray-700"
                         >
                             Sign Out
                         </button>
