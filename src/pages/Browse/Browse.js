@@ -24,7 +24,7 @@ const Browse = () => {
     ];
 
     return (
-        <div className='bg-gray-900'>
+        <div>
             <Header showSearch={showSearch} setShowSearch={setShowSearch} />
             {
                 showSearch ? <GPTSearch /> : <><BackgroundVideo />

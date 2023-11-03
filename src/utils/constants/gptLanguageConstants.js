@@ -1,17 +1,15 @@
-const lang = {
-    en: {
+export const lang = {
+    "en": {
         search: "Search",
         searchPlaceholder: "What do you want to watch today?"
     },
-    hi: {
+    "hi": {
         search: "खोजे",
         searchPlaceholder: "आज आप क्या देखना चाहते हैं?"
     },
-    es: {
+    "es": {
         search: "Buscar",
         searchPlaceholder: "¿Qué quieres ver hoy?"
     }
 
 }
-
-export default lang;
