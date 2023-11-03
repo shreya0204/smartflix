@@ -1,4 +1,4 @@
-import { API_OPTIONS, MOVIES_BASE_URL, VIDEO_URL } from '../../utils/constants';
+import { API_OPTIONS, MOVIES_BASE_URL } from '../../utils/constants';
 
 export const fetchAllMoviesData = async () => {
 
@@ -27,7 +27,7 @@ export const fetchAllMoviesData = async () => {
 };
 
 export const getMovieTrailerById = async (movie_id) => {
-    const movieVideosData = await fetch(VIDEO_URL + movie_id + '/videos', API_OPTIONS)
+    const movieVideosData = await fetch(MOVIES_BASE_URL + movie_id + '/videos', API_OPTIONS)
 
     const movieVideos = await movieVideosData.json()
     if (movieVideos.results && movieVideos.results.length > 0) {
