@@ -28,7 +28,7 @@ const Browse = () => {
             <Header showSearch={showSearch} setShowSearch={setShowSearch} />
             {
                 showSearch ? <GPTSearch /> : <><BackgroundVideo />
-                    <div>
+                    <div className='bg-gray-800'>
                         {error && <p>Error: {error}</p>}
                         {movieTypes.map((movieType) => (
                             <MovieList
