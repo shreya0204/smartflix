@@ -1,4 +1,4 @@
-import { IMAGE_URL } from "../../../utils/constants/urlConstants";
+import { IMAGE_URL } from "../../../utils/constants/configConstants";
 
 const MovieCard = ({ imageId }) => {
     return (

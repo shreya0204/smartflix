@@ -28,7 +28,7 @@ const Browse = () => {
             <Header showSearch={showSearch} setShowSearch={setShowSearch} />
             {
                 showSearch ? <GPTSearch /> : <><BackgroundVideo />
-                    <div className='bg-gray-800'>
+                    <div className='bg-gray-800 flex flex-col gap-4'>
                         {error && <p>Error: {error}</p>}
                         {movieTypes.map((movieType) => (
                             <MovieList
@@ -45,3 +45,4 @@ const Browse = () => {
 };
 
 export default Browse;
+    

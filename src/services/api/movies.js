@@ -1,4 +1,4 @@
-import { API_OPTIONS, MOVIES_BASE_URL } from '../../utils/constants/urlConstants';
+import { API_OPTIONS, MOVIES_BASE_URL, MOVIE_SEARCH_BASE_URL } from '../../utils/constants/configConstants';
 
 export const fetchAllMoviesData = async () => {
 
@@ -34,4 +34,19 @@ export const getMovieTrailerById = async (movie_id) => {
         const trailerVideo = movieVideos.results.find(video => video.type === 'Trailer' && video.site === 'YouTube');
         return trailerVideo ? trailerVideo.key : movieVideos.results[0].key;
     }
+}
+
+const searchGPTMovie = async (movieName) => {
+    const data = await fetch(`${MOVIE_SEARCH_BASE_URL}${movieName}`, API_OPTIONS)
+    const movie = await data.json();
+    return movie?.results[0];
+}
+
+export const getGPTRecommendedMovies = async ({ gptRecommendedMoviesArray }) => {
+
+    const promiseResultArray = gptRecommendedMoviesArray.map((movie) => searchGPTMovie(movie))
+
+    const recommendedMovies = await Promise.all(promiseResultArray);
+
+    return recommendedMovies;
 }

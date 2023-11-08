@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { addUser, removeUser } from '../../services/redux/slices/userSlice';
-import { LOGO_URL } from '../../utils/constants/urlConstants';
+import { LOGO_URL } from '../../utils/constants/configConstants';
 import LanguageDropDown from './LanguageDropDown';
 
 const Header = ({ showSearch, setShowSearch }) => {

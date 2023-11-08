@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { SUPPORTED_LANGUAGES } from "../../utils/constants/urlConstants";
+import { SUPPORTED_LANGUAGES } from "../../utils/constants/configConstants";
 import { setPreferredLanguage } from '../../services/redux/slices/configSlice';
 
 const LanguageDropDown = () => {
