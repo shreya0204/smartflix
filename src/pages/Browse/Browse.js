@@ -24,7 +24,7 @@ const Browse = () => {
     ];
 
     return (
-        <div>
+        <div className='h-screen'>
             <Header showSearch={showSearch} setShowSearch={setShowSearch} />
             {
                 showSearch ? <GPTSearch /> : <><BackgroundVideo />
@@ -45,4 +45,3 @@ const Browse = () => {
 };
 
 export default Browse;
-    
