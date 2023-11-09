@@ -8,9 +8,12 @@ export const API_OPTIONS = {
     method: 'GET',
     headers: {
         accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YmY2MTIyMWVlN2MyNjU4ZWQ3NjhjNjM2MTM3MTdlMCIsInN1YiI6IjY1NDM3ZDBlNmJlYWVhMDBjOWZhNzU0NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XfMGa1H9N8wRKR_tTKXBaheUDB_rVxzQQr1MSqRyRoE'
+        Authorization: 'Bearer ' + process.env.REACT_APP_TMDB_KEY
     }
 };
+
+export const GPT3_API_KEY = process.env.REACT_APP_GPT_API_KEY;
+
 
 export const IMAGE_URL = 'https://image.tmdb.org/t/p/w500'
 
@@ -34,6 +37,7 @@ export const SUPPORTED_LANGUAGES = [
         name: 'Spanish'
     }
 ]
+
 
 export const GPT_QUERY = "Act as a movie recommender system. Suggest some movies based on the query : ";
 export const GPT_QUERY_2 = "Only give me name of 5 movies based on the query. It should be strictly comma separated. For example: The Dark Knight, The Godfather, The Shawshank Redemption, The Godfather: Part II, The Lord of the Rings: The Return of the King. If the query isn't related to movies, series or isn't appropriate, against your rules, violate rules then strictly return an empty string like this : ''";
