@@ -43,10 +43,12 @@ const searchGPTMovie = async (movieName) => {
 }
 
 export const getGPTRecommendedMovies = async ({ gptRecommendedMoviesArray }) => {
+    const promiseResultArray = gptRecommendedMoviesArray.map(movie => searchGPTMovie(movie));
 
-    const promiseResultArray = gptRecommendedMoviesArray.map((movie) => searchGPTMovie(movie))
+    const results = await Promise.allSettled(promiseResultArray);
+    const successfulResults = results
+        .filter(result => result.status === 'fulfilled' && result.value)
+        .map(result => result.value);
 
-    const recommendedMovies = await Promise.all(promiseResultArray);
-
-    return recommendedMovies;
+    return successfulResults;
 }
