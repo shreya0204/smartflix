@@ -4,13 +4,19 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { addUser, removeUser } from '../../services/redux/slices/userSlice';
-import { LOGO_URL } from '../../utils/constants/configConstants';
 import LanguageDropDown from './LanguageDropDown';
 
 const Header = ({ showSearch, setShowSearch }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector((store) => store.user);
+
+    const handleLogoClick = () => {
+        // If already on the home page, don't navigate again
+        if (window.location.pathname === '/browse') return;
+        else navigate('/browse');
+    }
+
     const handleSignOut = async () => {
         try {
             await signOut(auth);
@@ -41,14 +47,9 @@ const Header = ({ showSearch, setShowSearch }) => {
 
     return (
         <div>
-            <div className={`w-full absolute h-24 bg-gradient-to-b from-gray-900 z-20 top-0 left-0 ${user ? 'bg-gray-950' : ''}`}>
-                <img
-                    src={LOGO_URL}
-                    alt="logo"
-                    className="h-full object-contain"
-                />
+            <div className={`flex items-center w-full absolute h-24 bg-gradient-to-b from-gray-900 z-20 top-0 left-0 ${user ? 'bg-gray-950' : ''}`} onClick={handleLogoClick}>
+                <p className=' text-red-600 text-5xl pl-4 font-bold uppercase tracking-wide cursor-pointer'>SmartFlix</p>
             </div>
-
             {
                 user && (
                     <div className="z-20 h-16 absolute top-0 right-0 mr-5 mt-5 cursor-pointer flex gap-4">
