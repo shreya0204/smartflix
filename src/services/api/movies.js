@@ -1,9 +1,6 @@
-import { API_OPTIONS, MOVIES_BASE_URL, MOVIE_SEARCH_BASE_URL } from '../../utils/constants/configConstants';
+import { API_OPTIONS, MOVIES_BASE_URL, MOVIE_SEARCH_BASE_URL, MOVIE_TYPES } from '../../utils/constants/configConstants';
 
 export const fetchAllMoviesData = async () => {
-
-    const MOVIE_TYPES = ["popular", "top_rated", "upcoming"];
-
     try {
         const moviePromises = MOVIE_TYPES.map(async (type) => {
 

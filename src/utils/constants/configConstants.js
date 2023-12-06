@@ -12,6 +12,8 @@ export const API_OPTIONS = {
     }
 };
 
+export const MOVIE_TYPES = ["popular", "top_rated", "upcoming"];
+
 export const GPT3_API_KEY = process.env.REACT_APP_GPT_API_KEY;
 
 
