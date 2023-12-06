@@ -4,6 +4,8 @@ import { YOUTUBE_VIDEO_URL } from '../../../utils/constants/configConstants';
 
 const BgVideo = ({ movie_id }) => {
 
+    // TODO : wait for the video to come, show a loading screen
+
     const [trailerId, setTrailerId] = useState(null);
 
     useEffect(() => {
@@ -12,11 +14,14 @@ const BgVideo = ({ movie_id }) => {
 
     return (
         <div className='relative w-full h-screen'>
-            <iframe
-                className='w-full h-full '
-                src={`${YOUTUBE_VIDEO_URL}${trailerId}?autoplay=1&vq=hd720&mute=1&disablekb=1&showinfo=0&logo=0&controls=0&autohide=1&modestbranding=0&rel=0&loop=1&playlist=${trailerId}`}
-                title="YouTube video player"
-            ></iframe>
+            {
+                trailerId &&
+                <iframe
+                    className='w-full h-full '
+                    src={`${YOUTUBE_VIDEO_URL}${trailerId}?autoplay=1&vq=hd720&mute=1&disablekb=1&showinfo=0&logo=0&controls=0&autohide=1&modestbranding=0&rel=0&loop=1&playlist=${trailerId}`}
+                    title="YouTube video player"
+                ></iframe>
+            }
         </div >
     );
 };
