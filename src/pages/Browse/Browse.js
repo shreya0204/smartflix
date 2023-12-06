@@ -4,10 +4,14 @@ import MovieList from '../../components/Browse/MoviesList';
 import Header from '../../components/Header/Navbar';
 import useAllMovies from '../../hooks/useAllMovies';
 import GPTSearch from '../../components/GPTSearch';
+import Modal from '../../components/Modal/Modal';
+import { getMovieDetailsById } from '../../services/api/movies';
 
 const Browse = () => {
 
     const [showSearch, setShowSearch] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedMovie, setSelectedMovie] = useState(null);
 
     const {
         popularMovies,
@@ -23,6 +27,12 @@ const Browse = () => {
         { title: "Upcoming", movies: upcomingMovies },
     ];
 
+    const handleMovieClick = async (movie) => {
+        const selectedMovie = await getMovieDetailsById(movie.id);
+        setSelectedMovie(selectedMovie);
+        setIsModalOpen(true);
+    };
+
     return (
         <div className='h-screen'>
             <Header showSearch={showSearch} setShowSearch={setShowSearch} />
@@ -36,8 +46,10 @@ const Browse = () => {
                                 title={movieType.title}
                                 movies={movieType.movies}
                                 isLoading={isLoading}
+                                onMovieClick={handleMovieClick}
                             />
                         ))}
+                        {isModalOpen && <Modal movie={selectedMovie} onClose={() => setIsModalOpen(false)} />}
                     </div></>
             }
         </div>

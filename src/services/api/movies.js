@@ -33,6 +33,13 @@ export const getMovieTrailerById = async (movie_id) => {
     }
 }
 
+export const getMovieDetailsById = async (movie_id) => {
+    const movieDetailsData = await fetch(MOVIES_BASE_URL + movie_id, API_OPTIONS)
+
+    const movieDetails = await movieDetailsData.json()
+    return movieDetails;
+}
+
 const searchGPTMovie = async (movieName) => {
     const data = await fetch(`${MOVIE_SEARCH_BASE_URL}${movieName}`, API_OPTIONS)
     const movie = await data.json();
