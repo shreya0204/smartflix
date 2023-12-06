@@ -1,57 +1,19 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { lang } from "../../utils/constants/gptLanguageConstants";
-import { useRef, useState } from "react"; // Import useState
-import { addGptResultMovies, updateSearchResultStatus, updateIsSearching } from "../../services/redux/slices/gptSlice";
-import { fetchUserQueryMovies } from "../../services/api/openai";
-import { getGPTRecommendedMovies } from "../../services/api/movies";
+import { useRef } from "react";
+import useGPTSearch from "../../hooks/useGPTSearch";
 
 const GPTSearchBar = () => {
     const searchText = useRef(null);
-    const dispatch = useDispatch();
     const selectedLanguage = useSelector(store => store.config.preferredLanguage);
-    const [isSearching, setIsSearching] = useState(false);
-    const [error, setError] = useState('');
-
-    const handleGPTSearchClick = async () => {
-        if (!searchText.current.value.trim()) {
-            setError('Please enter something to search');
-            return;
-        }
-        setError("");
-        setIsSearching(true);
-        dispatch(updateIsSearching(true));
-
-        try {
-            const gptRecommendedMoviesArray = await fetchUserQueryMovies({ userQuery: searchText.current.value });
-
-            if (gptRecommendedMoviesArray.length === 0) {
-                dispatch(addGptResultMovies([]));
-                dispatch(updateSearchResultStatus(false));
-            } else {
-                const recommendedMovies = await getGPTRecommendedMovies({ gptRecommendedMoviesArray });
-                if (recommendedMovies.length === 0) {
-                    // If no successful API calls, set an error message and update status
-                    setError('Something went wrong. Try again.');
-                    dispatch(updateSearchResultStatus(false));
-                    dispatch(addGptResultMovies([]));
-                } else {
-                    dispatch(addGptResultMovies(recommendedMovies));
-                    dispatch(updateSearchResultStatus(true));
-                }
-            }
-        } catch (error) {
-            console.error('Error fetching movies:', error);
-            setError('Something went wrong. Try again.');
-            dispatch(updateSearchResultStatus(false));
-        } finally {
-            setIsSearching(false);
-            dispatch(updateIsSearching(false));
-        }
-    };
-
+    const { handleGPTSearch, isSearching, error, setError } = useGPTSearch(); // Use custom hook
 
     const handleInputChange = () => {
         if (error) setError("");
+    };
+
+    const onSearchClick = () => {
+        handleGPTSearch(searchText.current.value);
     };
 
     return (
@@ -67,7 +29,7 @@ const GPTSearchBar = () => {
                     <button
                         className={`w-1/4 p-3 px-4 ${isSearching ? 'bg-gray-400' : 'bg-red-700 hover:bg-opacity-75'} text-white rounded-md`}
                         type="submit"
-                        onClick={handleGPTSearchClick}
+                        onClick={onSearchClick}
                         disabled={isSearching}
                     >
                         {isSearching ? 'Loading...' : lang[selectedLanguage].search}
