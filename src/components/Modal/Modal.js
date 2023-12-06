@@ -3,15 +3,21 @@ import { MdReviews } from "react-icons/md";
 import { IoIosCloseCircle } from "react-icons/io";
 import React, { useEffect, useRef } from 'react';
 import { IMAGE_URL } from "../../utils/constants/configConstants";
+import { useSelector, useDispatch } from 'react-redux';
+import { closeModal } from '../../services/redux/slices/modalSlice';
 
-const Modal = ({ movie, onClose }) => {
+const Modal = () => {
+    const dispatch = useDispatch();
     const modalRef = useRef();
-    const { original_title, title, release_date, overview, genres, backdrop_path, poster_path, vote_average, vote_count } = movie;
+    const { isOpen, movie } = useSelector(state => state.modal);
 
     const handleClickOutside = (event) => {
         if (modalRef.current && !modalRef.current.contains(event.target)) {
-            onClose();
+            dispatch(closeModal());
         }
+    };
+    const handleClose = () => {
+        dispatch(closeModal());
     };
 
     useEffect(() => {
@@ -22,9 +28,9 @@ const Modal = ({ movie, onClose }) => {
         };
     }, []);
 
-    console.log(movie);
-
     if (!movie) return null;
+    const { original_title, title, release_date, overview, genres, backdrop_path, poster_path, vote_average, vote_count } = movie;
+    if (!isOpen) return null;
     return (
         <div className="flex justify-center items-center overflow-y-auto overflow-x-hidden fixed inset-0 z-50 outline-none focus:outline-none text-white">
             <div className="relative w-9/12" ref={modalRef}>
@@ -34,8 +40,8 @@ const Modal = ({ movie, onClose }) => {
                             backgroundImage: `url('${IMAGE_URL}${backdrop_path}')`
                         }}
                         className={`flex flex-row justify-end bg-cover bg-no-repeat w-full object-cover h-36 bg-center rounded-t-lg border-b`}>
-                        <div className="p-2 cursor-pointer" onClick={onClose}>
-                            <IoIosCloseCircle className="text-5xl text-gray-950" />
+                        <div className="p-2 cursor-pointer" onClick={handleClose}>
+                            <IoIosCloseCircle className="text-5xl text-white" />
                         </div>
                     </div>
                     <div className="flex flex-col">
@@ -49,7 +55,7 @@ const Modal = ({ movie, onClose }) => {
                                 <p className="w-fit p-2 pl-0 text-gray-400">Release Date: {release_date} </p>
                                 <div className="flex flex-row gap-4 flew">
                                     {
-                                        genres.map((genre) => {
+                                        genres?.length > 0 && genres.map((genre) => {
                                             return <p key={genre.id} className="w-fit border border-gray-600 bg-gray-700 bg-opacity-30 text-white px-6 py-2 text-[14px]">{genre.name}</p>
                                         })
                                     }
