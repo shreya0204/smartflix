@@ -7,21 +7,24 @@ const useAllMovies = () => {
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    const { popularMovies, topRatedMovies, upcomingMovies } = useSelector(state => state.movies);
+
 
     useEffect(() => {
         setIsLoading(true);
-        fetchAllMoviesData()
-            .then(data => {
-                dispatch(setMovies(data)); // Dispatch the movies data to Redux store
-                setIsLoading(false);
-            })
-            .catch(err => {
-                dispatch(setError(err.message)); // Dispatch the error message to Redux store
-                setIsLoading(false);
-            });
-    }, [dispatch]);
+        if (popularMovies.length === 0 && topRatedMovies.length === 0 && upcomingMovies.length === 0)
+            fetchAllMoviesData()
+                .then(data => {
+                    dispatch(setMovies(data)); // Dispatch the movies data to Redux store
+                    setIsLoading(false);
+                })
+                .catch(err => {
+                    dispatch(setError(err.message)); // Dispatch the error message to Redux store
+                    setIsLoading(false);
+                });
+    }, []);
 
-    const { popularMovies, topRatedMovies, upcomingMovies } = useSelector(state => state.movies);
+
     return { popularMovies, topRatedMovies, upcomingMovies, isLoading, error };
 };
 

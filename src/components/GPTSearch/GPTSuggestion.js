@@ -5,13 +5,13 @@ import GPTMovieShimmer from "../Shimmer/gptMoviesShimmer";
 const GPTSuggestions = () => {
     const gptRecommendedMovies = useSelector(store => store.gpt.gptResultMovies);
     const searchResultsFound = useSelector(store => store.gpt.searchResultsFound);
-    const isSearching = useSelector(store => store.gpt.isSearching); // Get the searching state
+    const isSearching = useSelector(store => store.gpt.isSearching);
 
     const showMessage = gptRecommendedMovies.length > 0;
 
     return (
         <>
-            {isSearching && <GPTMovieShimmer />} {/* Render shimmer only when searching */}
+            {isSearching && <GPTMovieShimmer />}
             {!isSearching && (
                 <div className="flex flex-col px-16 gap-6 mt-24 justify-center items-center ">
                     {showMessage && (
@@ -22,7 +22,7 @@ const GPTSuggestions = () => {
                     <div className="flex flex-row gap-8 flex-wrap">
                         {gptRecommendedMovies?.map((movie, index) => (
                             <div key={index} className="flex flex-col gap-2">
-                                <img src={`${IMAGE_URL}/${movie?.poster_path}`} alt={movie?.title} className="h-72 aspect-auto" />
+                                <img src={`${IMAGE_URL}/${movie?.poster_path ? movie.poster_path : movie.backdrop_path}`} alt={movie?.title} className="h-72 aspect-auto" />
                                 <h1 className="text-white">{movie?.title}</h1>
                             </div>
                         ))}
