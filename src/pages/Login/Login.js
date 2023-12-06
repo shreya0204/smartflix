@@ -1,4 +1,4 @@
-import Header from '../../components/Header/Header';
+import Header from '../../components/Header/Navbar';
 import LoginForm from '../../components/Login/LoginForm';
 import { BG_URL } from '../../utils/constants/configConstants';
 

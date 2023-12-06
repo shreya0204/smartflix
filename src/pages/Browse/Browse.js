@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import BackgroundVideo from '../../components/Browse/Hero';
 import MovieList from '../../components/Browse/MoviesList';
-import Header from '../../components/Header/Header';
+import Header from '../../components/Header/Navbar';
 import useAllMovies from '../../hooks/useAllMovies';
 import GPTSearch from '../../components/GPTSearch';
 
