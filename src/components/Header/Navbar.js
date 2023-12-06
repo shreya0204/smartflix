@@ -43,7 +43,7 @@ const Header = ({ showSearch, setShowSearch }) => {
             // clean up - unsubscribe when component is unmount
             unsubscribe();
         }
-    }, []);
+    }, [dispatch, navigate]);
 
     return (
         <div>
