@@ -1,13 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import BackgroundVideo from '../../components/Browse/Hero';
 import MovieList from '../../components/Browse/MoviesList';
 import Header from '../../components/Header/Navbar';
 import useAllMovies from '../../hooks/useAllMovies';
 import GPTSearch from '../../components/GPTSearch';
 import Modal from '../../components/Modal/Modal';
+import { addUserGPTKey } from '../../services/redux/slices/gptSlice';
+import { useDispatch } from 'react-redux';
 
 const Browse = () => {
-
+    const dispatch = useDispatch();
     const [showSearch, setShowSearch] = useState(false);
 
     const {
@@ -24,6 +26,13 @@ const Browse = () => {
         { title: "Upcoming", movies: upcomingMovies },
     ];
 
+    useEffect(() => {
+        const key = localStorage.getItem('userGPTKey');
+        console.log(key);
+        if (key) {
+            dispatch(addUserGPTKey(key));
+        }
+    }, [dispatch]);
 
     return (
         <div className='h-screen'>

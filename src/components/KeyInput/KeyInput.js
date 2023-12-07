@@ -10,6 +10,7 @@ const KeyInput = () => {
 
     const onSumbitClick = (e) => {
         e.preventDefault();
+        localStorage.setItem('userGPTKey', JSON.stringify(inputKey.current.value));
         dispatch(addUserGPTKey(inputKey.current.value));
     }
     useEffect(() => {
@@ -21,9 +22,9 @@ const KeyInput = () => {
     return (
         <div className="flex justify-center">
             <div className="w-9/12 mt-32 bg-gray-500 rounded-lg bg-opacity-50">
-                <form className="p-4 m-2 flex flex-row gap-4">
+                <form className="p-4 m-2 flex flex-row gap-4 items-center justify-center">
                     <input
-                        className="w-3/4 px-2 rounded-md outline-none"
+                        className="w-3/4 px-2 py-3 rounded-md outline-none"
                         placeholder="Enter your GPT key here to enjoy!"
                         ref={inputKey}
                     />
