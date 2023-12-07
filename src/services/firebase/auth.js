@@ -8,12 +8,9 @@ export const signIn = async (isSignIn, name, email, password) => {
             ? await signInWithEmailAndPassword(auth, email, password)
             : await createUserWithEmailAndPassword(auth, email, password);
 
-        console.log("User Credentials", userCredential);
-
         if (!isSignIn) {
             // Wait for the user profile update to complete before returning the user
             const updatedUser = await updateUserProfile(userCredential.user, name);
-            console.log("Updated User", updatedUser);
             return { user: updatedUser };
         }
 
