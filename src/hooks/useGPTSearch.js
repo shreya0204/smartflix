@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addGptResultMovies, updateSearchResultStatus, updateIsSearching } from "../services/redux/slices/gptSlice";
 import { fetchUserQueryMovies } from "../services/api/openai";
 import { getGPTRecommendedMovies } from "../services/api/movies";
 
 const useGPTSearch = () => {
+    const dispatch = useDispatch();
+    const userGPTKey = useSelector(store => store.gpt.userGPTKey);
     const [isSearching, setIsSearching] = useState(false);
     const [error, setError] = useState('');
-    const dispatch = useDispatch();
 
     const handleGPTSearch = async (searchText) => {
         if (!searchText.trim()) {
@@ -19,7 +20,7 @@ const useGPTSearch = () => {
         dispatch(updateIsSearching(true));
 
         try {
-            const gptRecommendedMoviesArray = await fetchUserQueryMovies({ userQuery: searchText });
+            const gptRecommendedMoviesArray = await fetchUserQueryMovies({ userQuery: searchText, useGPTKey: userGPTKey });
 
             if (gptRecommendedMoviesArray.length === 0) {
                 dispatch(addGptResultMovies([]));
@@ -36,8 +37,7 @@ const useGPTSearch = () => {
                 }
             }
         } catch (error) {
-            console.error('Error fetching movies:', error);
-            setError('Something went wrong. Try again.');
+            setError('Error fetching movies!! Make sure your key is valid ' || 'Something went wrong. Try again.');
             dispatch(updateSearchResultStatus(false));
         } finally {
             setIsSearching(false);
