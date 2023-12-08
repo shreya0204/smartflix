@@ -1,7 +1,7 @@
 ## SmartFlix
 
-`NOTE: GPT-powered movie search is top-notch, but it comes with a cost. To enjoy the full AI search experience, please enter your OpenAI API key. Let's make movie magic happen together! I'am on a shoestring budget ;)
-`
+![smartflix](https://github.com/shreya0204/smartflix/assets/78657883/9b9bd202-fc1f-4725-baad-c76beb090ffd)
+
 
 Welcome to Smartflix, where your search for the perfect movie is powered by AI. Dive into a vast library of films and find exactly what you're in the mood for with just a few words. The platform offers a smart, intuitive UI inspired by Netflix, but with a twist - it's smarter and ready to find your next favorite flick in a snap.
 
@@ -20,3 +20,10 @@ Welcome to Smartflix, where your search for the perfect movie is powered by AI. 
 ## Have a look here 
 Get ready for a movie-watching experience that's tailored just for you. Click the link and start exploring the world of movies like never before.
 [Click me to see the magic!](https://smartflix-tau.vercel.app/)
+
+
+`NOTE: GPT-powered movie search is top-notch, but it comes with a cost. To enjoy the full AI search experience, please enter your OpenAI API key. Let's make movie magic happen together! I'am on a shoestring budget ;)
+`
+<br><br>
+
+![ezgif com-video-to-gif](https://github.com/shreya0204/smartflix/assets/78657883/988e1777-6bd6-4584-bb04-d8654b5b4dbe)
