@@ -36,7 +36,7 @@ const GPTSearchBar = ({ onKeyChange }) => {
                         onClick={onSearchClick}
                         disabled={isSearching}
                     >
-                        {isSearching ? 'Loading...' : lang[selectedLanguage].search}
+                        {isSearching ? 'Loading' : lang[selectedLanguage].search}
                     </button>
                     <p className="text-white text-sm w-fit border border-white py-3 px-2 hover:bg-gray-500 cursor-pointer" onClick={handleUpdateKey}>
                         Update Key</p>
