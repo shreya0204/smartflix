@@ -14,7 +14,7 @@ const GPTSearch = () => {
     };
 
     return (
-        <div className="bg-black bg-gradient-to-l from-gray-700 h-full">
+        <div className="bg-black bg-gradient-to-l from-gray-700 h-screen">
             {
                 showKeyInput || !userGPTKey ? <KeyInput onKeyChange={handleKeyInputChange} /> : <><GPTSearchBar onKeyChange={handleKeyInputChange} />
                     <GPTSuggestions /></>
