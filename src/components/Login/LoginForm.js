@@ -49,7 +49,7 @@ const LoginForm = () => {
 
     return (
         <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center">
-            <div className=" w-6/12 lg:w-4/12 lg:h-fit p-12 bg-black bg-opacity-75">
+            <div className=" sm:w-6/12 lg:w-4/12 lg:h-fit p-12 bg-black bg-opacity-75">
                 <form
                     onSubmit={(e) => e.preventDefault()}
                     className="flex flex-col justify-between items-center gap-2"
@@ -60,11 +60,11 @@ const LoginForm = () => {
                             ref={name}
                             type="text"
                             placeholder="Name"
-                            className="p-2 m-2 w-8/12 outline-none bg-[#333333] text-white"
+                            className="p-2 m-2 sm:w-8/12 outline-none bg-[#333333] text-white"
                         />
                     )}
 
-                    <div className="w-8/12 justify-start ">
+                    <div className="sm:w-8/12 justify-start ">
                         <input
                             ref={email}
                             type="email"
@@ -75,7 +75,7 @@ const LoginForm = () => {
                             {errorMessages.email}
                         </p>
                     </div>
-                    <div className="w-8/12 justify-start ">
+                    <div className="sm:w-8/12 justify-start ">
                         <input
                             ref={password}
                             type="password"
@@ -87,17 +87,17 @@ const LoginForm = () => {
                         </p>
                     </div>
                     <button
-                        className="p-3 m-4 w-8/12 bg-red-600 text-white rounded-md"
+                        className="p-3 m-4 w-full sm:w-8/12 bg-red-600 text-white rounded-md"
                         onClick={handleSigninSignupButton}
                     >
                         {isSignIn ? 'Sign in now' : 'Sign up now'}
                     </button>
-                    <div className="mt-4">
+                    <div className="mt-4 flex flex-col">
                         <span className="text-white">
                             {isSignIn ? 'New to Netflix?' : 'Already have an account?'}
                         </span>
                         <span
-                            className="text-red-600 cursor-pointer mx-2"
+                            className="text-red-600 cursor-pointer"
                             onClick={toggleSignInForm}
                         >
                             {isSignIn ? 'Sign up now' : 'Sign in'}
