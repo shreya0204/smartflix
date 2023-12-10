@@ -28,10 +28,10 @@ const GPTSuggestions = () => {
                             {searchResultsFound ? 'Here are some movies you might like' : 'No results found'}
                         </h1>
                     )}
-                    <div className="flex flex-row gap-8 flex-wrap">
+                    <div className="flex flex-row gap-8 flex-wrap sm:justify-center">
                         {gptRecommendedMovies?.map((movie, index) => (
                             <div key={movie?.id} className="flex flex-col gap-2 cursor-pointer" onClick={() => handleMovieClick(movie)}>
-                                <img src={`${IMAGE_URL}/${movie?.poster_path ? movie.poster_path : movie.backdrop_path}`} alt={movie?.title} className=" sm:h-72 aspect-auto" />
+                                <img src={`${IMAGE_URL}/${movie?.poster_path ? movie.poster_path : movie.backdrop_path}`} alt={movie?.title} className="sm:h-72 aspect-auto" />
                                 <h1 className="text-white">{movie?.title}</h1>
                             </div>
                         ))}
