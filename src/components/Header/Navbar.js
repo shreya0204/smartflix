@@ -48,7 +48,7 @@ const Header = ({ showSearch, setShowSearch }) => {
     return (
         <div>
             <div className={`flex items-center w-full absolute h-24 bg-gradient-to-b from-gray-900 z-20 top-0 left-0 ${user ? 'bg-gray-950' : ''}`} onClick={handleLogoClick}>
-                <p className=' text-red-600 text-5xl pl-4 font-bold uppercase tracking-wide cursor-pointer'>SmartFlix</p>
+                <p className=' text-red-600 text-xl sm:text-5xl pl-4 font-bold uppercase tracking-wide cursor-pointer'>SmartFlix</p>
             </div>
             {
                 user && (
@@ -61,7 +61,7 @@ const Header = ({ showSearch, setShowSearch }) => {
                         }>
                             {showSearch ? 'Go Back' : 'GPT Search'}
                         </button>
-                        <div>
+                        <div className='hidden sm:flex'>
                             <img
                                 src={user?.photoURL}
                                 alt="user-icon"

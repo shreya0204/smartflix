@@ -14,7 +14,7 @@ const LanguageDropDown = () => {
     return (
 
         <div >
-            <select className=" p-2 m-2 rounded-sm outline-none text-white border-gray-200 border border-opacity-50 bg-transparent" onChange={handleLanguageChange}>
+            <select className="py-2 sm:p-2 my-2 sm:m-2 rounded-sm outline-none text-white border-gray-200 sm:border border-opacity-50 bg-transparent" onChange={handleLanguageChange}>
                 {
                     SUPPORTED_LANGUAGES.map((language) => (
                         <option value={language.id} key={language.id} className="bg-transparent text-gray-900">
