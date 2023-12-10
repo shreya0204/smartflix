@@ -39,7 +39,7 @@ const Modal = () => {
                         style={{
                             backgroundImage: `url('${IMAGE_URL}${backdrop_path}')`
                         }}
-                        className={`flex flex-row justify-end bg-cover bg-no-repeat w-full object-cover h-36 bg-center rounded-t-lg border-b`}>
+                        className={`flex flex-row justify-end bg-cover bg-no-repeat w-full object-cover h-24 lg:h-36 bg-center rounded-t-lg border-b`}>
                         <div className="p-2 cursor-pointer" onClick={handleClose}>
                             <IoIosCloseCircle className="text-5xl text-white" />
                         </div>
@@ -47,16 +47,16 @@ const Modal = () => {
                     <div className="flex flex-col">
                         <div className="w-full flex flex-row justify-between items-start h-full">
                             <div className="relative w-5/12 p-10 pb-0 -top-10">
-                                <img src={`${IMAGE_URL}${poster_path}`} alt="poster" className="z-10 h-[400px] w-[300px] -mt-10 border-2" />
+                                <img src={`${IMAGE_URL}${poster_path}`} alt="poster" className="z-10 sm:h-[220px] lg:h-[400px] w-[300px] -mt-10 border-2" />
                             </div>
-                            <div className="w-7/12 flex flex-col gap-6 pt-20 pb-10 pr-10">
-                                <p className="text-5xl font-semibold tracking-wider text-gray-300">{original_title ? original_title : title}</p>
-                                <p className="text-[15px] text-gray-500">{overview} </p>
+                            <div className="w-7/12 flex flex-col sm:gap-2 lg:gap-6 sm:pt-6 lg:pt-20 pb-10 pr-10">
+                                <p className="sm:text-3xl lg:text-5xl font-semibold tracking-wider text-gray-300">{original_title ? original_title : title}</p>
+                                <p className="sm:text-[12px] lg:text-[15px] text-gray-500">{overview} </p>
                                 <p className="w-fit p-2 pl-0 text-gray-400">Release Date: {release_date} </p>
-                                <div className="flex flex-row gap-4 flew">
+                                <div className="flex flex-row sm:gap-2 lg:gap-4  flex-wrap">
                                     {
                                         genres?.length > 0 && genres.map((genre) => {
-                                            return <p key={genre.id} className="w-fit border border-gray-600 bg-gray-700 bg-opacity-30 text-white px-6 py-2 text-[14px]">{genre.name}</p>
+                                            return <p key={genre.id} className="w-fit border border-gray-600 bg-gray-700 bg-opacity-30 text-white px-2 lg:px-6 py-2 lg:text-[14px] sm:text-[12px]">{genre.name}</p>
                                         })
                                     }
                                 </div>

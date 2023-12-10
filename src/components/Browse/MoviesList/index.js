@@ -3,7 +3,7 @@ import MovieCard from "./MovieCard";
 const MovieList = ({ title, movies, isLoading }) => {
 
     return (
-        <div className="flex flex-col gap-4 bg-transparent pl-14 -translate-y-3/4 lg:-translate-y-2/3" >
+        <div className="flex flex-col gap-4 bg-transparent lg:pl-14 pl-4 -translate-y-3/4 lg:-translate-y-2/3" >
             < div >
                 <h1 className="text-white font-semibold text-lg ">{title}</h1>
             </div >
